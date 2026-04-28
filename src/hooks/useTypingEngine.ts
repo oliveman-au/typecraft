@@ -217,7 +217,7 @@ export function useTypingEngine({ mode, onComplete }: UseTypingEngineOptions) {
       totalErrorsRef.current += errs
 
       if (typed !== expectedWord) {
-        setWordErrors(prev => new Set([...prev, wordIdx]))
+        setWordErrors(prev => { const s = new Set(prev); s.add(wordIdx); return s; })
       }
 
       const nextIdx = wordIdx + 1
