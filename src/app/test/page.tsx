@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
-import { createServerClient } from '@/lib/supabase'
+import { createServerClient } from '@/lib/supabase-server'
 import { TypingTest } from '@/components/typing/TypingTest'
 import { NavBar } from '@/components/layout/NavBar'
 
