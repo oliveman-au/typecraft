@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0f;
+  color: #e8e8f0;
+  font-family: var(--font-body);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a40;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a55;
+}
+
+/* Typing area */
+.typing-word {
+  display: inline-block;
+  position: relative;
+}
+
+.typing-char {
+  position: relative;
+  transition: color 0.05s ease;
+}
+
+.typing-char.correct {
+  color: #4ade80;
+}
+
+.typing-char.incorrect {
+  color: #f87171;
+  text-decoration: underline;
+  text-decoration-color: #f87171;
+}
+
+.typing-char.pending {
+  color: #55556a;
+}
+
+.typing-char.active {
+  color: #e8e8f0;
+}
+
+/* Cursor */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #7c6cfc;
+  animation: cursorBlink 1s step-end infinite;
+  vertical-align: text-bottom;
+  border-radius: 1px;
+  box-shadow: 0 0 8px rgba(124, 108, 252, 0.6);
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Noise texture overlay */
+.noise-overlay::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* Gradient mesh background */
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 80%, rgba(124, 108, 252, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(91, 79, 212, 0.04) 0%, transparent 50%),
+    #0a0a0f;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(19, 19, 30, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+/* Focus ring */
+.focus-ring:focus-visible {
+  outline: 2px solid #7c6cfc;
+  outline-offset: 2px;
+}
+
+/* Input hidden but functional */
+.typing-input-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Stat card glow */
+.stat-card-glow {
+  box-shadow: 0 0 0 1px rgba(124, 108, 252, 0.1), 0 4px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Progress bar */
+.progress-bar {
+  background: linear-gradient(90deg, #7c6cfc, #5b4fd4);
+  box-shadow: 0 0 12px rgba(124, 108, 252, 0.4);
+}
+
+/* Tab active */
+.tab-active {
+  background: rgba(124, 108, 252, 0.15);
+  border-color: rgba(124, 108, 252, 0.4);
+  color: #7c6cfc;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
