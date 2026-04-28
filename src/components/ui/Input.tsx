@@ -26,7 +26,7 @@ export function Input({ label, error, icon, className, ...props }: InputProps) {
             'placeholder:text-text-muted',
             'focus:outline-none focus:border-accent-primary/50 focus:ring-1 focus:ring-accent-primary/20',
             'transition-all duration-200',
-            icon && 'pl-10',
+            icon ? 'pl-10' : undefined,
             error && 'border-red-500/50 focus:border-red-500/50 focus:ring-red-500/20',
             className
           )}
